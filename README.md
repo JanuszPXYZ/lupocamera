@@ -14,8 +14,9 @@ assets/         Lupologo.png, Lupoicon_web.png, hold.jpg, camera.jpg, films.jpg 
 
 ## Deploy
 
-You already have a user site at `<username>.github.io` (the blog). This is a
-**project site** — unlimited and free on the same account.
+Live at **https://januszpxyz.github.io/lupocamera/** — a project site alongside
+the `januszpxyz.github.io` user site (the blog). Pages is set to deploy from
+`main` / `(root)`. Push to `main` to publish.
 
 ```bash
 cd lupo-site
@@ -23,7 +24,7 @@ git init
 git add -A
 git commit -m "Lupo support site"
 git branch -M main
-git remote add origin git@github.com:<username>/lupo.git
+git remote add origin https://github.com/JanuszPXYZ/lupocamera.git
 git push -u origin main
 ```
 
@@ -32,13 +33,13 @@ Then in the repo: **Settings → Pages → Source: Deploy from a branch → `mai
 Live a minute or two later at:
 
 ```
-https://<username>.github.io/lupo/                 ← Marketing URL
-https://<username>.github.io/lupo/support.html     ← Support URL
-https://<username>.github.io/lupo/privacy.html     ← Privacy Policy URL
-https://<username>.github.io/lupo/terms.html
+https://januszpxyz.github.io/lupocamera/                 ← Marketing URL
+https://januszpxyz.github.io/lupocamera/support.html     ← Support URL
+https://januszpxyz.github.io/lupocamera/privacy.html     ← Privacy Policy URL
+https://januszpxyz.github.io/lupocamera/terms.html
 ```
 
-All links are relative, so it works under the `/lupo/` subpath with no changes.
+All links are relative, so it works under the `/lupocamera/` subpath with no changes.
 
 ## Custom domain (optional)
 
@@ -49,7 +50,10 @@ lupocamera.com
 ```
 
 - Apex: four `A` records → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-- Or `www` as a `CNAME` → `<username>.github.io`
+- Or `www` as a `CNAME` → `januszpxyz.github.io`
+
+Once a custom domain is set, `januszpxyz.github.io/lupocamera/` 301-redirects to it,
+so existing links keep working.
 
 Enable **Enforce HTTPS** in Settings → Pages once the certificate is issued.
 
