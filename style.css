@@ -106,9 +106,11 @@ li::marker{color:var(--faint)}
 .btn:focus-visible{outline:2px solid var(--red);outline-offset:3px}
 .btn .glyph{font-size:20px;line-height:1}
 @media (prefers-reduced-motion:reduce){ .btn{transition:none} .btn:active{transform:none} }
-.get .note{
+/* compound, not descendant — the note carries both classes on one element */
+.get.note{
+  display:block;
   font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--faint);margin-top:18px;text-align:center;
+  color:var(--faint);margin:26px 0 0;text-align:center;
 }
 
 /* ---------- device shots ---------- */
