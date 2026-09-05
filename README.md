@@ -8,53 +8,8 @@ support.html    Support  — App Store Connect "Support URL"
 privacy.html    Privacy  — App Store Connect "Privacy Policy URL"
 terms.html      Terms    — link only; Apple's Standard EULA applies by default
 style.css       Shared styles
-launch.sh       Pre-launch only — flips the teaser to the full site (see below)
-assets/         Lupologo.png, Lupoicon_web.png (sources kept in ../ASC/)
+assets/         Lupologo.png, Lupoicon_web.png, hold.jpg, camera.jpg, films.jpg (sources kept in ../ASC/)
 .nojekyll       Serve files as-is, skip Jekyll processing
-```
-
-## Pre-launch state — the site is currently a teaser
-
-While Lupo is in App Review, `main` carries a holding page rather than the real
-landing page, so the app's mechanics aren't public before the app is.
-
-**`main`** (what GitHub Pages serves) has:
-
-- `index.html` — a teaser: icon, "A camera for iPhone. The rest, shortly.",
-  `noindex`, and no screenshots
-- `support.html` — trimmed to contact, data collection, restore and refunds.
-  The answers describing exposures per roll, developing time, rotation and
-  film-as-consumable are held back
-- no `hold.jpg` / `camera.jpg` / `films.jpg` — they'd otherwise be fetchable at
-  a guessable URL
-- a `teaser` block at the end of `style.css`, marked and safe to delete
-
-**`launch`** (a branch Pages does *not* serve) is a snapshot of the complete
-site: full `index.html`, full `support.html`, all three screenshots.
-
-Note that `privacy.html` and `terms.html` still describe rolls, developing and
-notifications. They have to — they're the accurate disclosure App Review reads.
-The teaser reduces what's public; it doesn't eliminate it.
-
-### On approval
-
-```bash
-git checkout main
-./launch.sh                       # restores the full site from `launch`
-# replace idXXXXXXXXX with the real App Store ID, check the page, then:
-git rm launch.sh
-git commit -am "Launch: full landing page"
-git push
-```
-
-`launch.sh` restores `index.html`, `support.html` and the three screenshots
-byte-for-byte, and strips the teaser CSS block. To go back, check out the
-pre-launch commit.
-
-Keep the `launch` branch pushed, so the full site isn't only on one machine:
-
-```bash
-git push -u origin launch
 ```
 
 ## Deploy
@@ -102,12 +57,11 @@ so existing links keep working.
 
 Enable **Enforce HTTPS** in Settings → Pages once the certificate is issued.
 
-## Launch-day checklist
+## Live checklist
 
-- [ ] Run `./launch.sh` to restore the full landing page
-- [ ] Replace `idXXXXXXXXX` in the two App Store links (`index.html`) with the real app ID
+- [x] App Store links point at `id6804823538` (`index.html`, two places)
 - [ ] Swap the custom download button for Apple's official App Store badge
-- [ ] Confirm the "Requires iOS 26" line under the hero button matches your deployment target
+- [x] "Requires iOS 26" matches the shipping deployment target (minimum iOS 26.0)
 - [ ] All URLs load in a private window with no login
 - [ ] Contact email is monitored — reviewers sometimes test it
 - [ ] Developing time in `support.html` matches the shipping build
